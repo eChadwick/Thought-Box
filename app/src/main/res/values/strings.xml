@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Thought Box</string>
+    <string name="thought_placeholder">Your Thought Please</string>
+    <string name="save">Save</string>
 </resources>
