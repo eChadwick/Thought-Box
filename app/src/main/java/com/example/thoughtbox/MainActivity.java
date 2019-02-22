@@ -21,6 +21,5 @@ public class MainActivity extends AppCompatActivity {
         TextView thoughtBox = findViewById(R.id.NewThoughtBox);
         String thought = thoughtBox.getText().toString();
         mThoughtViewModel.insert(new Thought(thought));
-        int puppies = 7;
     }
 }
