@@ -5,10 +5,14 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
+import org.hamcrest.core.Is;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -16,12 +20,21 @@ import static org.junit.Assert.*;
 public class DatabaseTest {
     private ThoughtDao mThoughtDao;
     private ThoughtRoomDatabase mDb;
+    private List<String> mTestThoughts = Arrays.asList(
+            "thought one",
+            "thought two",
+            "thought three"
+    );
 
     @Before
     public void setUp() throws Exception { ;
         Context context = InstrumentationRegistry.getContext();
         mDb = Room.inMemoryDatabaseBuilder(context, ThoughtRoomDatabase.class).build();
         mThoughtDao = mDb.thoughtDao();
+        for(int i = 0; i < mTestThoughts.size(); i++) {
+            Thought newThought = new Thought(mTestThoughts.get(i));
+            mThoughtDao.insert(newThought);
+        }
     }
 
     @After
@@ -30,10 +43,17 @@ public class DatabaseTest {
     }
 
     @Test
-    public void SaveAndRetrieveThought() throws  Exception {
-        Thought newThought = new Thought("Just work please");
-        mThoughtDao.insert(newThought);
-        Thought retrievedThought = mThoughtDao.getThought("Just work please");
-        assertEquals(newThought.getContent(), retrievedThought.getContent());
+    public void RetrieveSingleThought() throws  Exception {
+        Thought retrievedThought = mThoughtDao.getThought("thought one");
+        assertEquals(retrievedThought.getContent(), mTestThoughts.get(0));
+    }
+
+    @Test
+    public void RetrieveAllThoughts() throws  Exception {
+        List<Thought> retrievedThoughts = mThoughtDao.getAllThoughts();
+        assertEquals(mTestThoughts.size(), retrievedThoughts.size());
+        for(int i = 0; i < mTestThoughts.size(); i++) {
+            assertEquals(mTestThoughts.get(i), retrievedThoughts.get(i).getContent());
+        }
     }
 }
