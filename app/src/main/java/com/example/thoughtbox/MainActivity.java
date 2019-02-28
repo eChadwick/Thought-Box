@@ -1,6 +1,7 @@
 package com.example.thoughtbox;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,13 +14,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        mThoughtViewModel = ViewModelProviders.of(this).get(ThoughtViewModel.class);
+        Intent startUpIntent = new Intent(this, ShowAllThoughts.class);
+        startActivity(startUpIntent);
     }
-
-    public void onSaveThought(View view) {
-        TextView thoughtBox = findViewById(R.id.NewThoughtBox);
-        String thought = thoughtBox.getText().toString();
-        mThoughtViewModel.insert(new Thought(thought));
-    }
+    
 }
