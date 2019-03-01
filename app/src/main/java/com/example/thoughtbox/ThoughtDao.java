@@ -1,5 +1,6 @@
 package com.example.thoughtbox;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
@@ -15,5 +16,5 @@ public interface ThoughtDao {
     Thought getThought( String thought );
 
     @Query("Select * From Thought")
-    List<Thought> getAllThoughts();
+    LiveData<List<Thought>> getAllThoughts();
 }

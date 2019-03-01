@@ -17,4 +17,8 @@ public class ThoughtViewModel extends AndroidViewModel {
     public void insert(Thought thought) {
         mRepository.insert(thought);
     }
+
+    public LiveData<List<Thought>> getAllThoughts() {
+        return mRepository.getAllThoughts();
+    }
 }

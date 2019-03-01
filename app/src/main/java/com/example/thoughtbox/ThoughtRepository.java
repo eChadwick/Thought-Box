@@ -1,15 +1,20 @@
 package com.example.thoughtbox;
 
 import android.app.Application;
+import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
+
+import java.util.List;
 
 public class ThoughtRepository {
 
     private ThoughtDao mThoughtDao;
+    private LiveData<List<Thought>> mAllThoughts;
 
     ThoughtRepository(Application app) {
         ThoughtRoomDatabase db = ThoughtRoomDatabase.getDatabase(app);
         mThoughtDao = db.thoughtDao();
+        mAllThoughts = mThoughtDao.getAllThoughts();
     }
 
     public void insert(Thought thought) {
@@ -30,4 +35,27 @@ public class ThoughtRepository {
             return null;
         }
     }
+
+    public LiveData<List<Thought>> getAllThoughts() {
+        return mAllThoughts;
+    }
+
+//    private static class retrievalAsyncTask extends AsyncTask<Void, Void, List<Thought> > {
+//
+//        private ThoughtDao mAsyncTaskDao;
+//
+//        retrievalAsyncTask(ThoughtDao dao) {
+//            mAsyncTaskDao = dao;
+//        }
+//
+//        @Override
+//        protected void doInBackground(Void... params) {
+//            mAsyncTaskDao.getAllThoughts();
+//        }
+//
+//        @Override
+//        protected void onPostExecute(List<Thought> result) {
+//            findViewById()
+//        }
+//    }
 }
