@@ -10,17 +10,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShowAllThoughts extends AppCompatActivity {
 
     private ThoughtViewModel mThoughtViewModel;
-    private LiveData<List<Thought>> mAllThoughts;
-
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
+    private List<Thought> mAllThoughts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +39,17 @@ public class ShowAllThoughts extends AppCompatActivity {
 
         mThoughtViewModel = ViewModelProviders.of(this).get(ThoughtViewModel.class);
         mAllThoughts = mThoughtViewModel.getAllThoughts();
-        // This apparently speeds loading.
-        mRecyclerView.setHasFixedSize(true);
 
-//        mLayoutManager = new LinearLayoutManager(this);
-//        mRecyclerView.setLayoutManager(mLayoutManager);
+//         This apparently speeds loading.
+        RecyclerView aViewRef = findViewById(R.id.all_thoughts_view);
+//        aViewRef.setHasFixedSize(true);
 
-//        mAdapter = new ThoughtListAdapter(mAllThoughts);
-//        mRecyclerView.setAdapter(mAdapter);
+        RecyclerView.LayoutManager aLayoutManager = new LinearLayoutManager(this);
+        ((LinearLayoutManager) aLayoutManager).setOrientation(LinearLayoutManager.VERTICAL);
+        aViewRef.setLayoutManager(aLayoutManager);
+
+        ThoughtRecyclerAdapter anAdapter = new ThoughtRecyclerAdapter(this);
+        aViewRef.setAdapter(anAdapter);
     }
 
 }

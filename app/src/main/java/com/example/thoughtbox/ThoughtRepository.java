@@ -9,7 +9,7 @@ import java.util.List;
 public class ThoughtRepository {
 
     private ThoughtDao mThoughtDao;
-    private LiveData<List<Thought>> mAllThoughts;
+    private List<Thought> mAllThoughts;
 
     ThoughtRepository(Application app) {
         ThoughtRoomDatabase db = ThoughtRoomDatabase.getDatabase(app);
@@ -36,7 +36,7 @@ public class ThoughtRepository {
         }
     }
 
-    public LiveData<List<Thought>> getAllThoughts() {
+    public List<Thought> getAllThoughts() {
         return mAllThoughts;
     }
 

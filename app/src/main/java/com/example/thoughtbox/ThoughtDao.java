@@ -16,5 +16,5 @@ public interface ThoughtDao {
     Thought getThought( String thought );
 
     @Query("Select * From Thought")
-    LiveData<List<Thought>> getAllThoughts();
+    List<Thought>getAllThoughts();
 }
