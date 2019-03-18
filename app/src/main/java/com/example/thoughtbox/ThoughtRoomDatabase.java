@@ -15,6 +15,7 @@ public abstract class ThoughtRoomDatabase extends RoomDatabase {
         if (INSTANCE == null) {
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                     ThoughtRoomDatabase.class, "thoughts_db")
+                    .allowMainThreadQueries()
                     .build();
         }
         return INSTANCE;

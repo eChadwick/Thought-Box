@@ -9,11 +9,12 @@ import android.widget.TextView;
 public class CreateThought extends AppCompatActivity {
 
     ThoughtViewModel mThoughtViewModel;
+    ThoughtRoomDatabase mDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_all_thoughts);
+        setContentView(R.layout.activity_create_thought);
         mThoughtViewModel = ViewModelProviders.of(this).get(ThoughtViewModel.class);
     }
 

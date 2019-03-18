@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class ThoughtRecyclerAdapter extends RecyclerView.Adapter {
+public class ThoughtRecyclerAdapter extends RecyclerView.Adapter<ThoughtRecyclerAdapter.ThoughtViewHolder> {
 
     class ThoughtViewHolder extends RecyclerView.ViewHolder {
         private TextView mThoughtHolderItem;
@@ -25,18 +25,20 @@ public class ThoughtRecyclerAdapter extends RecyclerView.Adapter {
     private final LayoutInflater mInflater;
     private List<Thought> mThoughts;
 
-    ThoughtRecyclerAdapter(Context context) {
+    ThoughtRecyclerAdapter(Context context, List<Thought> allThoughts) {
         mInflater = LayoutInflater.from(context);
+        mThoughts = allThoughts;
     }
 
     @Override
     public ThoughtViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = mInflater.inflate(R.layout.thought_list_item, parent);
-        return new ThoughtViewHolder(itemView);
+        View itemView = mInflater.inflate(R.layout.thought_list_item, parent, false);
+        ThoughtViewHolder aViewHolder = new ThoughtViewHolder(itemView);
+        return aViewHolder;
     }
 
     @Override
-    public void onBindViewHolder (RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder (@NonNull ThoughtViewHolder holder, int position) {
         if ( mThoughts != null ) {
             Thought aThought = mThoughts.get(position);
             ((ThoughtViewHolder) holder).mThoughtHolderItem.setText(aThought.getContent());
