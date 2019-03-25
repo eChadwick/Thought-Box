@@ -1,5 +1,6 @@
 package com.example.thoughtbox;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,7 +23,15 @@ public class CreateThought extends AppCompatActivity {
         TextView thoughtBox = findViewById(R.id.NewThoughtBox);
         String theThought = thoughtBox.getText().toString();
         mThoughtDao.insert(new Thought(theThought));
-//        mThoughtViewModel.insert(new Thought(thought));
+        returnToList();
+    }
 
+    public void onCancelNewThought(View view) {
+        returnToList();
+    }
+
+    private void returnToList() {
+        Intent thoughtListIntent = new Intent(this, ShowAllThoughts.class);
+        startActivity(thoughtListIntent);
     }
 }
