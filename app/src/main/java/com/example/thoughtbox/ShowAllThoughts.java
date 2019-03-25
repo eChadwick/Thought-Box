@@ -1,9 +1,13 @@
 package com.example.thoughtbox;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import java.util.List;
 
@@ -16,6 +20,9 @@ public class ShowAllThoughts extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.thought_list);
 
+        Toolbar theToolbar = findViewById(R.id.thought_list_toolbar);
+        setSupportActionBar(theToolbar);
+
         mDb = ThoughtRoomDatabase.getDatabase(this);
         ThoughtDao aThoughtDao = mDb.thoughtDao();
         mAllThoughts = aThoughtDao.getAllThoughts();
@@ -27,5 +34,21 @@ public class ShowAllThoughts extends AppCompatActivity {
         theListView.setAdapter(adpater);
 
         theListView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.thought_list_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.new_thought_button:
+                Intent newThoughtIntent = new Intent(this, CreateThought.class);
+                startActivity(newThoughtIntent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
