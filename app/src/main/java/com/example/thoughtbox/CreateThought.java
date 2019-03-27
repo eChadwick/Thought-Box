@@ -17,6 +17,11 @@ public class CreateThought extends AppCompatActivity {
         setContentView(R.layout.activity_create_thought);
         mDb = ThoughtRoomDatabase.getDatabase(this);
         mThoughtDao = mDb.thoughtDao();
+
+        android.support.v7.widget.Toolbar theToolbar = findViewById(R.id.add_thought_toolbar);
+        theToolbar.setTitle("Add a Thought");
+        theToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
+        setSupportActionBar(theToolbar);
     }
 
     public void onSaveThought(View view) {
