@@ -8,5 +8,10 @@
         android:id="@+id/thought_list_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_margin="1dp"
+        android:layout_weight="1"
+        android:background="@color/defaultThoughtCardColor"
+        android:clickable="false"
+        android:padding="1dp"
+        android:textSize="30sp" />
 </LinearLayout>
