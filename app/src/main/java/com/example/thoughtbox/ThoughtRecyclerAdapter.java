@@ -19,7 +19,6 @@ public class ThoughtRecyclerAdapter extends RecyclerView.Adapter<ThoughtRecycler
             super(itemView);
             mThoughtHolderItem = itemView.findViewById(R.id.thought_list_item);
         }
-
     }
 
     private final LayoutInflater mInflater;
@@ -42,6 +41,7 @@ public class ThoughtRecyclerAdapter extends RecyclerView.Adapter<ThoughtRecycler
         if ( mThoughts != null ) {
             Thought aThought = mThoughts.get(position);
             ((ThoughtViewHolder) holder).mThoughtHolderItem.setText(aThought.getContent());
+            holder.mThoughtHolderItem.setOnClickListener(new ThoughtClickListener(aThought));
         } else {
             ((ThoughtViewHolder)holder).mThoughtHolderItem.setText("No saved thoughts to show.");
         }

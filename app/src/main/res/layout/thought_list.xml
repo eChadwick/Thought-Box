@@ -17,5 +17,6 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/all_thoughts_list"
         android:layout_width="395dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:clickable="true" />
 </LinearLayout>
