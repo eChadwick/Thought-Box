@@ -24,8 +24,18 @@ public class Thought {
         this.mContent = mContent;
     }
 
-//  Content of the thought
-    @PrimaryKey
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int ignoredId) {
+        Id = Id;
+    }
+
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    private int Id;
+
     @NonNull
     private String mContent;
 }
