@@ -8,9 +8,10 @@ import android.support.annotation.NonNull;
 public class Thought {
 
 //  Constructor
-    public Thought(@NonNull String mContent)
+    public Thought(int Id, @NonNull String mContent)
     {
         this.mContent = mContent;
+        this.Id = Id;
     }
 
 //  Returns the content of the thought

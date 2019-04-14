@@ -27,7 +27,7 @@ public class CreateThought extends AppCompatActivity {
     public void onSaveThought(View view) {
         TextView thoughtBox = findViewById(R.id.NewThoughtBox);
         String theThought = thoughtBox.getText().toString();
-        mThoughtDao.insert(new Thought(theThought));
+        mThoughtDao.insert(new Thought(0, theThought));
         returnToList();
     }
 
