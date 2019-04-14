@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 public class ThoughtRecyclerAdapter extends RecyclerView.Adapter<ThoughtRecyclerAdapter.ThoughtViewHolder> {
 
     class ThoughtViewHolder extends RecyclerView.ViewHolder {
-        private TextView mThoughtHolderItem;
+        private LinearLayout mThoughtHolderItem;
 
         ThoughtViewHolder(View itemView) {
             super(itemView);
@@ -40,10 +41,18 @@ public class ThoughtRecyclerAdapter extends RecyclerView.Adapter<ThoughtRecycler
     public void onBindViewHolder (@NonNull ThoughtViewHolder holder, int position) {
         if ( mThoughts != null ) {
             Thought aThought = mThoughts.get(position);
-            ((ThoughtViewHolder) holder).mThoughtHolderItem.setText(aThought.getContent());
-            holder.mThoughtHolderItem.setOnClickListener(new ThoughtClickListener(aThought));
+
+            TextView thoughtContent = holder.mThoughtHolderItem.findViewById(R.id.thought_list_item_content);
+            thoughtContent.setText(aThought.getContent());
+
+            TextView thoughtId = holder.mThoughtHolderItem.findViewById(R.id.thought_list_item_id);
+            thoughtId.setText(String.valueOf(aThought.getId()));
+
+            thoughtContent.setOnClickListener(new ThoughtClickListener(aThought));
+//            holder.mThoughtHolderItem.setOnClickListener(new ThoughtClickListener(aThought));
         } else {
-            ((ThoughtViewHolder)holder).mThoughtHolderItem.setText("No saved thoughts to show.");
+            TextView thoughtContent = holder.mThoughtHolderItem.findViewById(R.id.thought_list_item_content);
+            thoughtContent.setText(R.string.no_saved_thoughts);
         }
     }
 
