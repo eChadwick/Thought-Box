@@ -1,7 +1,9 @@
 package com.example.thoughtbox;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.View;
 
 public class ThoughtClickListener implements View.OnClickListener {
@@ -14,7 +16,7 @@ public class ThoughtClickListener implements View.OnClickListener {
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(final View v) {
         db = ThoughtRoomDatabase.getDatabase(v.getContext());
         thoughtDao = db.thoughtDao();
 
@@ -24,6 +26,9 @@ public class ThoughtClickListener implements View.OnClickListener {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 thoughtDao.deleteThought(clickedThought);
+                Context currentContext = v.getContext();
+                Intent relaunch = new Intent(currentContext, ShowAllThoughts.class);
+                currentContext.startActivity(relaunch);
             }
         });
         alertBuilder.setNegativeButton("Edit", new DialogInterface.OnClickListener() {

@@ -45,11 +45,7 @@ public class ThoughtRecyclerAdapter extends RecyclerView.Adapter<ThoughtRecycler
             TextView thoughtContent = holder.mThoughtHolderItem.findViewById(R.id.thought_list_item_content);
             thoughtContent.setText(aThought.getContent());
 
-            TextView thoughtId = holder.mThoughtHolderItem.findViewById(R.id.thought_list_item_id);
-            thoughtId.setText(String.valueOf(aThought.getId()));
-
             thoughtContent.setOnClickListener(new ThoughtClickListener(aThought));
-//            holder.mThoughtHolderItem.setOnClickListener(new ThoughtClickListener(aThought));
         } else {
             TextView thoughtContent = holder.mThoughtHolderItem.findViewById(R.id.thought_list_item_content);
             thoughtContent.setText(R.string.no_saved_thoughts);
