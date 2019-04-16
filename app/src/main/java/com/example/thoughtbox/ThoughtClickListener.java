@@ -19,6 +19,7 @@ public class ThoughtClickListener implements View.OnClickListener {
     public void onClick(final View v) {
         db = ThoughtRoomDatabase.getDatabase(v.getContext());
         thoughtDao = db.thoughtDao();
+        final Context currentContext = v.getContext();
 
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(v.getContext());
         alertBuilder.setTitle("What would you like to do with this thought?");
@@ -26,7 +27,6 @@ public class ThoughtClickListener implements View.OnClickListener {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 thoughtDao.deleteThought(clickedThought);
-                Context currentContext = v.getContext();
                 Intent relaunch = new Intent(currentContext, ShowAllThoughts.class);
                 currentContext.startActivity(relaunch);
             }
@@ -34,7 +34,9 @@ public class ThoughtClickListener implements View.OnClickListener {
         alertBuilder.setNegativeButton("Edit", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                Intent edit = new Intent(currentContext, CreateThought.class);
+                edit.putExtra("ThoughtId", clickedThought.getId());
+                currentContext.startActivity(edit);
             }
         });
 
