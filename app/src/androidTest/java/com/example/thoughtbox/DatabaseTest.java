@@ -44,7 +44,7 @@ public class DatabaseTest {
 
     @Test
     public void RetrieveSingleThought() throws  Exception {
-        Thought retrievedThought = mThoughtDao.getThought("thought one");
+        Thought retrievedThought = mThoughtDao.getThought(1);
         assertEquals(retrievedThought.getContent(), mTestThoughts.get(0));
     }
 

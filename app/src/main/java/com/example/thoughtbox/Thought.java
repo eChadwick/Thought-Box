@@ -8,10 +8,9 @@ import android.support.annotation.NonNull;
 public class Thought {
 
 //  Constructor
-    public Thought(int Id, @NonNull String mContent)
+    public Thought(@NonNull String mContent)
     {
         this.mContent = mContent;
-        this.Id = Id;
     }
 
 //  Returns the content of the thought
@@ -29,8 +28,8 @@ public class Thought {
         return Id;
     }
 
-    public void setId(int ignoredId) {
-        Id = Id;
+    public void setId(int Id) {
+        this.Id = Id;
     }
 
     @PrimaryKey(autoGenerate = true)

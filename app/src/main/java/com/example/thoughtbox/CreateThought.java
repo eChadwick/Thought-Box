@@ -38,7 +38,7 @@ public class CreateThought extends AppCompatActivity {
         String theThought = thoughtBox.getText().toString();
         int callingThoughtId = mCallingIntent.getIntExtra("ThoughtId", -1);
         if(callingThoughtId == -1) {
-            mThoughtDao.insert(new Thought(0, theThought));
+            mThoughtDao.insert(new Thought(theThought));
         } else {
             Thought thoughtModel = mThoughtDao.getThought(callingThoughtId);
             thoughtModel.setContent(theThought);
