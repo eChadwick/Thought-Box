@@ -20,11 +20,12 @@ import static org.junit.Assert.*;
 public class DatabaseTest {
     private ThoughtDao mThoughtDao;
     private ThoughtRoomDatabase mDb;
-    private List<String> mTestThoughts = Arrays.asList(
+    private final List<String> mTestThoughts = Arrays.asList(
             "thought one",
             "thought two",
             "thought three"
     );
+    private final String mUpdatedThoughtContent = "This has been updated";
 
     @Before
     public void setUp() throws Exception { ;
@@ -55,5 +56,13 @@ public class DatabaseTest {
         for(int i = 0; i < mTestThoughts.size(); i++) {
             assertEquals(mTestThoughts.get(i), retrievedThoughts.get(i).getContent());
         }
+    }
+
+    @Test
+    public void UpdateThought() throws  Exception {
+        Thought aThought = mThoughtDao.getThought(1);
+        aThought.setContent(mUpdatedThoughtContent);
+        mThoughtDao.updateThought(aThought);
+        assertEquals( mUpdatedThoughtContent, mThoughtDao.getThought(1).getContent());
     }
 }
