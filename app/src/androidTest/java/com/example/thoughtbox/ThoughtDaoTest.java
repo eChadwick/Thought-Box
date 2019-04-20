@@ -5,7 +5,6 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
-import org.hamcrest.core.Is;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,9 +16,9 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 @RunWith(AndroidJUnit4.class)
-public class DatabaseTest {
+public class ThouhgtDaoTest {
     private ThoughtDao mThoughtDao;
-    private ThoughtRoomDatabase mDb;
+    private ThoughtBoxRoomDatabase mDb;
     private final List<String> mTestThoughts = Arrays.asList(
             "thought one",
             "thought two",
@@ -30,7 +29,7 @@ public class DatabaseTest {
     @Before
     public void setUp() throws Exception { ;
         Context context = InstrumentationRegistry.getContext();
-        mDb = Room.inMemoryDatabaseBuilder(context, ThoughtRoomDatabase.class).build();
+        mDb = Room.inMemoryDatabaseBuilder(context, ThoughtBoxRoomDatabase.class).build();
         mThoughtDao = mDb.thoughtDao();
         for(int i = 0; i < mTestThoughts.size(); i++) {
             Thought newThought = new Thought(mTestThoughts.get(i));
@@ -64,5 +63,12 @@ public class DatabaseTest {
         aThought.setContent(mUpdatedThoughtContent);
         mThoughtDao.updateThought(aThought);
         assertEquals( mUpdatedThoughtContent, mThoughtDao.getThought(1).getContent());
+    }
+
+    @Test
+    public void DeleteThought() throws Exception {
+        Thought aThought = mThoughtDao.getThought(1);
+        mThoughtDao.deleteThought(aThought);
+        assertEquals(null, mThoughtDao.getThought(1));
     }
 }

@@ -8,7 +8,7 @@ import android.view.View;
 
 public class ThoughtClickListener implements View.OnClickListener {
     private Thought clickedThought;
-    private ThoughtRoomDatabase db;
+    private ThoughtBoxRoomDatabase db;
     private ThoughtDao thoughtDao;
 
     ThoughtClickListener(Thought aThought) {
@@ -17,7 +17,7 @@ public class ThoughtClickListener implements View.OnClickListener {
 
     @Override
     public void onClick(final View v) {
-        db = ThoughtRoomDatabase.getDatabase(v.getContext());
+        db = ThoughtBoxRoomDatabase.getDatabase(v.getContext());
         thoughtDao = db.thoughtDao();
         final Context currentContext = v.getContext();
 
@@ -27,14 +27,14 @@ public class ThoughtClickListener implements View.OnClickListener {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 thoughtDao.deleteThought(clickedThought);
-                Intent relaunch = new Intent(currentContext, ShowAllThoughts.class);
+                Intent relaunch = new Intent(currentContext, ThoughtListActivity.class);
                 currentContext.startActivity(relaunch);
             }
         });
         alertBuilder.setNegativeButton("Edit", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent edit = new Intent(currentContext, CreateThought.class);
+                Intent edit = new Intent(currentContext, CreateThoughtActivity.class);
                 edit.putExtra("ThoughtId", clickedThought.getId());
                 currentContext.startActivity(edit);
             }

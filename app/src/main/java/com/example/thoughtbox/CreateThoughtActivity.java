@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class CreateThought extends AppCompatActivity {
+public class CreateThoughtActivity extends AppCompatActivity {
 
-    ThoughtRoomDatabase mDb;
+    ThoughtBoxRoomDatabase mDb;
     ThoughtDao mThoughtDao;
     Intent mCallingIntent;
 
@@ -21,7 +21,7 @@ public class CreateThought extends AppCompatActivity {
         theToolbar.setTitle("Add a Thought");
         setSupportActionBar(theToolbar);
 
-        mDb = ThoughtRoomDatabase.getDatabase(this);
+        mDb = ThoughtBoxRoomDatabase.getDatabase(this);
         mThoughtDao = mDb.thoughtDao();
         mCallingIntent = getIntent();
 
@@ -52,7 +52,7 @@ public class CreateThought extends AppCompatActivity {
     }
 
     private void returnToList() {
-        Intent thoughtListIntent = new Intent(this, ShowAllThoughts.class);
+        Intent thoughtListIntent = new Intent(this, ThoughtListActivity.class);
         startActivity(thoughtListIntent);
     }
 }

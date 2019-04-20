@@ -10,8 +10,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import java.util.List;
 
-public class ShowAllThoughts extends AppCompatActivity {
-    ThoughtRoomDatabase mDb;
+public class ThoughtListActivity extends AppCompatActivity {
+    ThoughtBoxRoomDatabase mDb;
     List<Thought> mAllThoughts;
 
     @Override
@@ -24,7 +24,7 @@ public class ShowAllThoughts extends AppCompatActivity {
         theToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
         setSupportActionBar(theToolbar);
 
-        mDb = ThoughtRoomDatabase.getDatabase(this);
+        mDb = ThoughtBoxRoomDatabase.getDatabase(this);
         ThoughtDao aThoughtDao = mDb.thoughtDao();
         mAllThoughts = aThoughtDao.getAllThoughts();
 
@@ -47,7 +47,7 @@ public class ShowAllThoughts extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.new_thought_button:
-                Intent newThoughtIntent = new Intent(this, CreateThought.class);
+                Intent newThoughtIntent = new Intent(this, CreateThoughtActivity.class);
                 startActivity(newThoughtIntent);
         }
         return super.onOptionsItemSelected(item);
