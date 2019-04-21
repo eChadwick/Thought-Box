@@ -16,7 +16,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 @RunWith(AndroidJUnit4.class)
-public class ThouhgtDaoTest {
+public class ThoughtDaoTest {
     private ThoughtDao mThoughtDao;
     private ThoughtBoxRoomDatabase mDb;
     private final List<String> mTestThoughts = Arrays.asList(
