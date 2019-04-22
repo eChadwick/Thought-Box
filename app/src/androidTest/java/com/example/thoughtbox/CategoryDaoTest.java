@@ -51,4 +51,10 @@ public class CategoryDaoTest {
         List<Category> allCategories = mCategoryDao.getAllCategories();
         assertEquals( ExpectedNumEntries, allCategories.size());
     }
+
+    @Test
+    public void deleteCategory() throws Exception {
+        mCategoryDao.delete( mCategoryDao.getCategory(1));
+        assertEquals(null, mCategoryDao.getCategory(1));
+    }
 }
