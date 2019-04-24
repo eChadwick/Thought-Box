@@ -6,5 +6,8 @@
     <item
         android:id="@+id/new_thought_button"
         android:icon="@drawable/add_button"
-        app:showAsAction="always" />
+        android:title="@string/add_thought" />
+    <item
+        android:id="@+id/new_category_button"
+        android:title="@string/add_category" />
 </menu>

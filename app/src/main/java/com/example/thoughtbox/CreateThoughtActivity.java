@@ -17,7 +17,6 @@ public class CreateThoughtActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_thought);
         android.support.v7.widget.Toolbar theToolbar = findViewById(R.id.add_thought_toolbar);
-        theToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
         theToolbar.setTitle("Add a Thought");
         setSupportActionBar(theToolbar);
 

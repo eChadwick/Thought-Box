@@ -21,7 +21,6 @@ public class ThoughtListActivity extends AppCompatActivity {
 
         Toolbar theToolbar = findViewById(R.id.thought_list_toolbar);
         theToolbar.setTitle("All Thoughts");
-        theToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
         setSupportActionBar(theToolbar);
 
         mDb = ThoughtBoxRoomDatabase.getDatabase(this);

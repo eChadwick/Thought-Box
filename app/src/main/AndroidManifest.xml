@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ThoughtListActivity"></activity>
-        <activity android:name=".CreateThoughtActivity"></activity>
+        <activity android:name=".CreateCategoryActivity"></activity>
+        <activity android:name=".ThoughtListActivity" />
+        <activity android:name=".CreateThoughtActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

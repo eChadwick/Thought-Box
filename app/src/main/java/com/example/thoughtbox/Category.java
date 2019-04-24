@@ -13,7 +13,8 @@ import java.util.List;
 @Entity
 public class Category {
 
-    public Category() {
+    public Category(@NonNull String Name) {
+        this.Name = Name;
     }
 
     public int getId() {
@@ -22,6 +23,14 @@ public class Category {
 
     public void setId(int Id) {
         this.Id = Id;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName() {
+        this.Name = Name;
     }
 
 //    public List<Thought> getThoughts() {
@@ -35,6 +44,9 @@ public class Category {
     @PrimaryKey(autoGenerate = true)
     @NonNull
     private int Id;
+
+    @NonNull
+    private String Name;
 
 //    List<Thought> mThoughtsList;
 }

@@ -21,6 +21,9 @@ public class CategoryDaoTest {
     private ThoughtBoxRoomDatabase mDb;
 
     private final int ExpectedNumEntries = 3;
+    private final String ExpectedCategoryName1 = "Test Category 1";
+    private final String ExpectedCategoryName2 = "Test Category 2";
+    private final String ExpectedCategoryName3 = "Test Category 3";
 
     public CategoryDaoTest() {
         Context context = InstrumentationRegistry.getContext();
@@ -30,8 +33,8 @@ public class CategoryDaoTest {
 
     @Before
     public void setup() throws Exception {
-        for(int i = 0; i < 3; i++) {
-            mCategoryDao.insert(new Category());
+        for(int i = 1; i <= 3; i++) {
+            mCategoryDao.insert(new Category("Test Category " + Integer.toString(i)));
         }
     }
 
@@ -44,12 +47,16 @@ public class CategoryDaoTest {
     public void getSingleCategories() throws Exception {
         Category testCategory = mCategoryDao.getCategory(1);
         assertNotNull(testCategory);
+        assertEquals(ExpectedCategoryName1 ,testCategory.getName());
     }
 
     @Test
     public void getAllCategories() throws Exception {
         List<Category> allCategories = mCategoryDao.getAllCategories();
         assertEquals( ExpectedNumEntries, allCategories.size());
+        assertEquals( ExpectedCategoryName1, allCategories.get(0).getName());
+        assertEquals( ExpectedCategoryName2, allCategories.get(1).getName());
+        assertEquals( ExpectedCategoryName3, allCategories.get(2).getName());
     }
 
     @Test
