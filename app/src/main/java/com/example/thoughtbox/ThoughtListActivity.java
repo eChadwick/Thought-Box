@@ -12,6 +12,7 @@ import java.util.List;
 
 public class ThoughtListActivity extends AppCompatActivity {
     ThoughtBoxRoomDatabase mDb;
+    ThoughtDao mThoughtDao;
     List<Thought> mAllThoughts;
 
     @Override
@@ -24,8 +25,8 @@ public class ThoughtListActivity extends AppCompatActivity {
         setSupportActionBar(theToolbar);
 
         mDb = ThoughtBoxRoomDatabase.getDatabase(this);
-        ThoughtDao aThoughtDao = mDb.thoughtDao();
-        mAllThoughts = aThoughtDao.getAllThoughts();
+        mThoughtDao = mDb.thoughtDao();
+        mAllThoughts = mThoughtDao.getAllThoughts();
 
         RecyclerView theListView = (RecyclerView) findViewById(R.id.all_thoughts_list);
         theListView.setHasFixedSize(true);
@@ -55,5 +56,14 @@ public class ThoughtListActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        mAllThoughts = mThoughtDao.getAllThoughts();
+        ThoughtRecyclerAdapter newDataAdapter = new ThoughtRecyclerAdapter(this, mAllThoughts);
+        RecyclerView theListView = (RecyclerView) findViewById(R.id.all_thoughts_list);
+        theListView.setAdapter(newDataAdapter);
+        super.onResume();
     }
 }

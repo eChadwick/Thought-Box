@@ -29,5 +29,10 @@ public class CreateCategoryActivity extends AppCompatActivity {
         String categoryName = newCategoryBox.getText().toString();
         Category aCategory = new Category(categoryName);
         mCategoryDao.insert(aCategory);
+        finish();
+    }
+
+    public void OnCancelCategory(View view) {
+        finish();
     }
 }
