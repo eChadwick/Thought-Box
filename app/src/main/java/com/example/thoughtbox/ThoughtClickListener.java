@@ -4,7 +4,12 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+
+import java.util.List;
 
 public class ThoughtClickListener implements View.OnClickListener {
     private Thought clickedThought;
@@ -20,6 +25,7 @@ public class ThoughtClickListener implements View.OnClickListener {
         db = ThoughtBoxRoomDatabase.getDatabase(v.getContext());
         thoughtDao = db.thoughtDao();
         final Context currentContext = v.getContext();
+        final ViewParent parentView = (ViewGroup) v.getParent().getParent();
 
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(v.getContext());
         alertBuilder.setTitle("What would you like to do with this thought?");
@@ -27,8 +33,10 @@ public class ThoughtClickListener implements View.OnClickListener {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 thoughtDao.deleteThought(clickedThought);
-                Intent relaunch = new Intent(currentContext, ThoughtListActivity.class);
-                currentContext.startActivity(relaunch);
+                List<Thought> allThoughts = thoughtDao.getAllThoughts();
+                ThoughtRecyclerAdapter newAdapter = new ThoughtRecyclerAdapter(currentContext, allThoughts);
+                RecyclerView theView = ((ViewGroup) parentView).findViewById(R.id.all_thoughts_list);
+                theView.setAdapter(newAdapter);
             }
         });
         alertBuilder.setNegativeButton("Edit", new DialogInterface.OnClickListener() {
