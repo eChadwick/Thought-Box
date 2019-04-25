@@ -54,6 +54,10 @@ public class ThoughtListActivity extends AppCompatActivity {
                 Intent newCategoryIntent = new Intent(this, CreateCategoryActivity.class);
                 startActivity(newCategoryIntent);
                 break;
+            case R.id.view_categories_button:
+                Intent viewCategoriesIntent = new Intent(this, CategoryListActivity.class);
+                startActivity(viewCategoriesIntent);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

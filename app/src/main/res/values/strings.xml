@@ -6,5 +6,7 @@
     <string name="title_activity_show_all_thoughts">ShowAllThoughts</string>
     <string name="no_saved_thoughts">No saved thoughts. Click + to add some.</string>
     <string name="add_thought">Add a Thought</string>
-    <string name="add_category">Add a Cateogory</string>
+    <string name="add_category">Add a Category</string>
+    <string name="view_categories">View Categories</string>
+    <string name="view_thoughts">View Thoughts</string>
 </resources>

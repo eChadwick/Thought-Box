@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/new_thought_button"
+        android:title="@string/add_thought" />
+    <item
+        android:id="@+id/new_category_button"
+        android:title="@string/add_category" />
+    <item
+        android:id="@+id/view_thoughts_button"
+        android:title="@string/view_thoughts" />
+</menu>
