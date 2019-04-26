@@ -3,11 +3,21 @@ package com.example.thoughtbox;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Adapter;
+import android.widget.ListView;
+
+import java.util.List;
 
 public class CategoryListActivity extends AppCompatActivity {
+
+    private ThoughtBoxRoomDatabase mDb;
+    private CategoryDao mCategoryDao;
+    private List<Category> mCategoryList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +27,18 @@ public class CategoryListActivity extends AppCompatActivity {
         Toolbar theToolbar = findViewById(R.id.category_list_toolbar);
         theToolbar.setTitle("All Categories");
         setSupportActionBar(theToolbar);
+
+        mDb = ThoughtBoxRoomDatabase.getDatabase(this);
+        mCategoryDao = mDb.categoryDao();
+        mCategoryList = mCategoryDao.getAllCategories();
+
+        RecyclerView theList = (RecyclerView) findViewById(R.id.category_list);
+        theList.setHasFixedSize(true);
+
+        CategoryRecyclerAdapter anAdapter = new CategoryRecyclerAdapter(this, mCategoryList);
+        theList.setAdapter(anAdapter);
+
+        theList.setLayoutManager( new LinearLayoutManager(this));
     }
 
     @Override
