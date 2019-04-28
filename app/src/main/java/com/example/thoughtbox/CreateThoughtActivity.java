@@ -43,7 +43,8 @@ public class CreateThoughtActivity extends AppCompatActivity {
             thoughtModel.setContent(theThought);
             mThoughtDao.updateThought(thoughtModel);
         }
-        finish();
+        Intent thoughtListIntent = new Intent(this, ThoughtListActivity.class);
+        startActivity(thoughtListIntent);
     }
 
     public void onCancelNewThought(View view) {

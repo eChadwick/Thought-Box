@@ -29,7 +29,8 @@ public class CreateCategoryActivity extends AppCompatActivity {
         String categoryName = newCategoryBox.getText().toString();
         Category aCategory = new Category(categoryName);
         mCategoryDao.insert(aCategory);
-        finish();
+        Intent categoryListIntent = new Intent(this, CategoryListActivity.class);
+        startActivity(categoryListIntent);
     }
 
     public void OnCancelCategory(View view) {
