@@ -3,6 +3,7 @@ package com.example.thoughtbox;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,14 @@ public class CategoryClickListener implements View.OnClickListener {
                 CategoryRecyclerAdapter newAdapter = new CategoryRecyclerAdapter(currentContext, allCategories);
                 RecyclerView theView = ((ViewGroup) parentView).findViewById(R.id.category_list);
                 theView.setAdapter(newAdapter);
+            }
+        });
+        alertBuilder.setNegativeButton("Edit", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent edit = new Intent(currentContext, CreateCategoryActivity.class);
+                edit.putExtra("CategoryId", mClickedCategory.getId());
+                currentContext.startActivity(edit);
             }
         });
 

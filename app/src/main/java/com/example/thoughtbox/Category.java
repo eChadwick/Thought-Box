@@ -29,7 +29,7 @@ public class Category {
         return Name;
     }
 
-    public void setName() {
+    public void setName(String Name) {
         this.Name = Name;
     }
 

@@ -24,6 +24,7 @@ public class CategoryDaoTest {
     private final String ExpectedCategoryName1 = "Test Category 1";
     private final String ExpectedCategoryName2 = "Test Category 2";
     private final String ExpectedCategoryName3 = "Test Category 3";
+    private final String UpdatedCategoryName = "Updated Category";
 
     public CategoryDaoTest() {
         Context context = InstrumentationRegistry.getContext();
@@ -63,5 +64,14 @@ public class CategoryDaoTest {
     public void deleteCategory() throws Exception {
         mCategoryDao.delete( mCategoryDao.getCategory(1));
         assertEquals(null, mCategoryDao.getCategory(1));
+    }
+
+    @Test
+    public void updateCategory() throws Exception {
+        Category testCategory = mCategoryDao.getCategory(1);
+        testCategory.setName(UpdatedCategoryName);
+        mCategoryDao.update(testCategory);
+        testCategory = mCategoryDao.getCategory(1);
+        assertEquals(UpdatedCategoryName, testCategory.getName());
     }
 }
