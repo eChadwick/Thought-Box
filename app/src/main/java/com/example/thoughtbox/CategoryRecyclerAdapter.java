@@ -45,6 +45,7 @@ public class CategoryRecyclerAdapter extends RecyclerView.Adapter<CategoryRecycl
 
             TextView categoryContent = holder.mCategoryHolderItem.findViewById(R.id.category_list_item_content);
             categoryContent.setText(theCategory.getName());
+            categoryContent.setOnClickListener(new CategoryClickListener(theCategory));
         }
     }
 
