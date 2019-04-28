@@ -15,7 +15,7 @@ public abstract class ThoughtBoxRoomDatabase extends RoomDatabase {
     static ThoughtBoxRoomDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                    ThoughtBoxRoomDatabase.class, "thoughts_db")
+                    ThoughtBoxRoomDatabase.class, "ThoughtBoxDb")
                     .allowMainThreadQueries()
                     .build();
         }
