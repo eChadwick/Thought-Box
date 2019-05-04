@@ -1,7 +1,6 @@
 package com.example.thoughtbox;
 
 import android.arch.persistence.room.Room;
-import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 

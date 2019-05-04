@@ -43,13 +43,13 @@ public class ThoughtDaoTest {
     }
 
     @Test
-    public void RetrieveSingleThought() throws  Exception {
+    public void RetrieveSingleThought() throws Exception {
         Thought retrievedThought = mThoughtDao.getThought(1);
         assertEquals(retrievedThought.getContent(), mTestThoughts.get(0));
     }
 
     @Test
-    public void RetrieveAllThoughts() throws  Exception {
+    public void RetrieveAllThoughts() throws Exception {
         List<Thought> retrievedThoughts = mThoughtDao.getAllThoughts();
         assertEquals(mTestThoughts.size(), retrievedThoughts.size());
         for(int i = 0; i < mTestThoughts.size(); i++) {
@@ -58,7 +58,7 @@ public class ThoughtDaoTest {
     }
 
     @Test
-    public void UpdateThought() throws  Exception {
+    public void UpdateThought() throws Exception {
         Thought aThought = mThoughtDao.getThought(1);
         aThought.setContent(mUpdatedThoughtContent);
         mThoughtDao.updateThought(aThought);

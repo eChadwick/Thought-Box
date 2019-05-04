@@ -25,4 +25,5 @@ public interface CategoryDao {
 
     @Update
     void update(Category category);
+
 }
