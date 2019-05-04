@@ -9,4 +9,6 @@
     <string name="add_category">Add a Category</string>
     <string name="view_categories">View Categories</string>
     <string name="view_thoughts">View Thoughts</string>
+    <string name="add_thoughts">Add Thoughts</string>
+    <string name="submit">Submit</string>
 </resources>

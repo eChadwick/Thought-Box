@@ -52,4 +52,9 @@ public class CreateCategoryActivity extends AppCompatActivity {
     public void OnCancelCategory(View view) {
         finish();
     }
+
+    public void OnAddThoughts(View view) {
+        Intent intent = new Intent(this, SelectThoughtsActivity.class);
+        startActivity(intent);
+    }
 }
