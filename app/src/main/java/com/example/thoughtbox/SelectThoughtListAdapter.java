@@ -1,5 +1,4 @@
 package com.example.thoughtbox;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +19,7 @@ public class SelectThoughtListAdapter extends ArrayAdapter<Thought> {
         Thought theThought = getItem(position);
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.thought_list_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.select_thought_list_item, parent, false);
         }
         TextView thoughtContent = (TextView) convertView.findViewById(R.id.thought_list_item_content);
         TextView thoughtId = (TextView) convertView.findViewById(R.id.thought_list_item_id);

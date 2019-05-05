@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/appBackgroundColor"
     android:orientation="vertical"
     tools:context=".SelectThoughtsActivity">
 
@@ -19,7 +20,8 @@
         android:id="@+id/select_thought_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:choiceMode="multipleChoice">
 
     </ListView>
 
@@ -27,5 +29,6 @@
         android:id="@+id/select_thoughts_submit_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="onSubmit"
         android:text="@string/submit" />
 </LinearLayout>
