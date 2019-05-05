@@ -1,8 +1,11 @@
 package com.example.thoughtbox;
 
+import android.database.sqlite.SQLiteConstraintException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.AndroidException;
+import android.util.AndroidRuntimeException;
 import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.Button;
@@ -55,7 +58,11 @@ public class SelectThoughtsActivity extends AppCompatActivity {
         }
         for(int i = 0; i < checkedThoughtIds.size(); i++) {
             CategoryThought categoryThought = new CategoryThought(mCallingCategoryId, checkedThoughtIds.get(i));
-            mCategoryThoughtDao.insert(categoryThought);
+            try {
+                mCategoryThoughtDao.insert(categoryThought);
+            } catch (SQLiteConstraintException e) {
+                continue;
+            }
         }
         finish();
     }
