@@ -30,13 +30,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center|top"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/save_new_category_button"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
             android:onClick="onSaveCategory"
             android:text="@string/save" />
@@ -44,7 +43,7 @@
         <Button
             android:id="@+id/add_thoughts_to_category_button"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
             android:onClick="OnAddThoughts"
             android:text="@string/add_thoughts" />
@@ -52,7 +51,7 @@
         <Button
             android:id="@+id/cancel_new_category_button"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
             android:onClick="OnCancelCategory"
             android:text="@string/cancel" />
