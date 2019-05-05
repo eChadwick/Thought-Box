@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class CreateCategoryActivity extends AppCompatActivity {
@@ -31,6 +32,10 @@ public class CreateCategoryActivity extends AppCompatActivity {
             TextView theView = findViewById(R.id.category_name_field);
             theView.setText(categoryName);
         }
+        else {
+            Button addThoughtsButton = (Button) findViewById(R.id.add_thoughts_to_category_button);
+            addThoughtsButton.setVisibility(View.GONE);
+        }
     }
 
     public void onSaveCategory(View view) {
@@ -55,6 +60,7 @@ public class CreateCategoryActivity extends AppCompatActivity {
 
     public void OnAddThoughts(View view) {
         Intent intent = new Intent(this, SelectThoughtsActivity.class);
+        intent.putExtra("CategoryId", mCallingIntent.getIntExtra("CategoryId", -1));
         startActivity(intent);
     }
 }
