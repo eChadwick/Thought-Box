@@ -7,20 +7,12 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-@Entity
+@Entity(primaryKeys = {"CategoryId", "ThoughtId"})
 public class CategoryThought {
 
     public CategoryThought(int CategoryId, int ThoughtId) {
         this.ThoughtId = ThoughtId;
         this.CategoryId = CategoryId;
-    }
-
-    public int getId() {
-        return this.Id;
-    }
-
-    public void setId(int Id) {
-        this.Id = Id;
     }
 
     public int getThoughtId() {
@@ -39,14 +31,9 @@ public class CategoryThought {
         this.CategoryId = categoryId;
     }
 
-    @PrimaryKey(autoGenerate = true)
-    @NonNull
-    int Id;
-
     @NonNull
     int ThoughtId;
 
     @NonNull
     int CategoryId;
-
 }
