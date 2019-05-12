@@ -1,5 +1,6 @@
 package com.example.thoughtbox;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteConstraintException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -64,7 +65,8 @@ public class SelectThoughtsActivity extends AppCompatActivity {
                 continue;
             }
         }
-        finish();
+        Intent anIntent = new Intent(this, CategoryListActivity.class);
+        startActivity(anIntent);
     }
 
     public void onThoughtClick(View view) {
