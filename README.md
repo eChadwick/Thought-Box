@@ -5,4 +5,5 @@ Thought-Box is philosophically, an application to store one’s thoughts and all
 
 On a technical level, Thought-Box is essentially and enhanced list app.  Each thought is represented by a list item.  Thoughts can be uncategorized (like “Remember to pick up pet wombat from daycare”) or categorized (like “Bars/Restaurants that allow wombats”).  Categorized thoughts are also able to be prioritized within their category (for instance “acquire materials” would be of higher priority than “leash wombat” in the prioritized category “build wombat shelter”).  A thought is able to belong to multiple categories with different priorities in each category (for example “acquire materials” may be top priority in the “build wombat shelter” prioritized categorized but it may be below “feed wombat” in the prioritized category “today’s to-do list”. 
 
-Future releases may include google maps integration for location based thoughts and reminder alerts for time dependent thoughts.
+*Note - Prioritization of Thoughts in Categories will be added in a future release.
+
